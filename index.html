@@ -1,17 +1,27 @@
 <html>
 <head>
- <title>Rotel</title>
+ <title>Parasond Zpre3</title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script> 
- <script src="rotelConfig.js"></script> 
- <script src="rotelClient.js"></script> 
+ <script src="zpre3Config.js"></script> 
+ <script src="zpre3Client.js"></script> 
  <script src="reconnectingWebsocket.js"></script> 
 
 <style>
 input, label {
     display: block;
+}
+button {
+    float: left;
+    display:inline-block !important;
+    width:8% !important;   
+}
+.ui-slider {
+    width: 75% !important;
+    padding: 8px !important;
+    display:inline-block !important;
 }
 .flipswitchrow
 {
@@ -58,7 +68,7 @@ input, label {
 <option value="on">On</option>
 </select>
 </div>
-
+<!--
 <div class="flipswitchcolumn">
 <label for="tone-flipswitch">Tone:</label>
 <select id="tone-flipswitch" data-role="flipswitch">
@@ -66,12 +76,12 @@ input, label {
 <option value="on">On</option>
 </select>
 </div>
-
+-->
 <div class="flipswitchcolumn">
 <label for="mute-flipswitch">Mute:</label>
 <select id="mute-flipswitch" data-role="flipswitch">
-<option value="off">Off</option>
-<option value="on">On</option>
+<option value="0">Off</option>
+<option value="1">On</option>
 </select>
 </div>
 
@@ -79,46 +89,51 @@ input, label {
 
 <label>
     <label for="volume-slider">Volume:</label>
-    <input name="volume-slider" id="volume-slider" data-highlight="true" min="0" max="95" value="10" type="range">
+    <button name="volume-minus" id="volume-minus">-</button>
+    <button name="volume-plus" id="volume-plus">+</button>
+    <input name="volume-slider" id="volume-slider" data-highlight="true" min="0" max="95" value="50" type="range">
 </label> 
 
 
 <label for="source" class="select">Source:</label>
 <select name="source" id="source">
-<option id="aux1" value="aux1">AUX1</option>
-<option id="aux2" value="aux2">AUX2</option>
-<option id="coax1" value="coax1">COAX1</option>
-<option id="coax2" value="coax2">COAX2</option>
-<option id="opt1" value="opt1">OPT1</option>
-<option id="opt2" value="opt2">OPT2</option>
-<option id="tuner" value="tuner">TUNER</option>
-<option id="phono" value="phono">PHONO</option>
-<option id="cd" value="cd">CD</option>
-<option id="usb" value="usb">USB</option>
+<option id="input1" value="6">INPUT1</option>
+<option id="input2" value="7">INPUT2</option>
+<option id="input3" value="8">INPUT3</option>
+<option id="input4" value="9">INPUT4</option>
+<option id="bypass" value="3">BYPASS</option>
 </select></label> 
-
 
 <label>
     <label for="treble-slider">Treble:</label>
-    <input name="treble-slider" id="treble-slider" data-highlight="true" min="-10" max="10" value="0" type="range">
+    <button name="treble-minus" id="treble-minus">-</button>
+    <button name="treble-plus" id="treble-plus">+</button>
+    <input name="treble-slider" id="treble-slider" data-highlight="true" min="0" max="16" value="08" type="range" disabled>
 </label> 
 
 <label>
     <label for="bass-slider">Bass:</label>
-    <input name="bass-slider" id="bass-slider" data-highlight="true" min="-10" max="10" value="0" type="range">
+    <button name="bass-minus" id="bass-minus">-</button>
+    <button name="bass-plus" id="bass-plus">+</button>
+    <input name="bass-slider" id="bass-slider" data-highlight="true" min="0" max="16" value="08" type="range" disabled>
 </label> 
 
 <label>
     <label for="balance-slider">Balance:</label>
-    <input name="balance-slider" id="balance-slider" data-highlight="true" min="-15" max="15" value="0" type="range">
-</label> 
+    <button name="balance-minus" id="balance-minus">-</button>
+    <button name="balance-plus" id="balance-plus">+</button>
+    <input name="balance-slider" id="balance-slider" data-highlight="true" min="0" max="32" value="16" type="range" disabled>
+</label>
+
+
+<div id="debug"></div>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-	var rotelClient = new RotelClient();	
+	var zpre3Client = new Zpre3Client();	
 });
 
-$(window).on('beforeunload', function() {rotelClient.discard();} );
+$(window).on('beforeunload', function() {zpre3Client.discard();} );
 </script>
 </div>
 </body>
