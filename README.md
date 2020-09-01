@@ -1,12 +1,13 @@
-Rotel Web Client 
+Parasound Zpre3 Web Client 
 ================
 
-If you have a modern Rotel Hifi amplifier with a serial RS232 input, chances are you can use this project to control it from your phone or any device with a modern web browser. 
+If you have a Parasound Zpre3 or maybe other Parasound with RS232 interface, you can control the device with a simple web interface. Huge props for the work done on https://github.com/claes/rotel-web-client, which I use for my Rotel RC-1570 and inspired me to make a version that works for my Zpre3. 
 
-I wrote this to use a Raspberry Pi (running Volumio) together with a USB-to-RS232 adapter to control my Rotel RA-12 amplifier.
+The setup for this is Raspberry Pi (running Ropieee) and an FTDI USB-to-RS232 with the eventual goal of having full automated control via Roon.
 
 ![Screenshot](screenshot.png)
 
+===========================================
 
 *Instructions*
 
